@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace FinanceAPI.Models
+namespace Finance.Server.Models
 {
     public class Order
     {
