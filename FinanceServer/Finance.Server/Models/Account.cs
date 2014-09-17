@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Finance.Server.Models
@@ -8,7 +7,6 @@ namespace Finance.Server.Models
     {
         public Account()
         {
-           
         }
 
         public int Id { get; set; }
@@ -19,7 +17,5 @@ namespace Finance.Server.Models
         public DateTime CreatedOn { get; set; }
 
         public DateTime LastLogOn { get; set; }
-
-        
     }
 }

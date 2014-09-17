@@ -8,7 +8,6 @@ namespace Finance.Server.Database
         public FinanceContext()
             : base("name=Finance")
         {
-
         }
 
         IDbSet<Account> Accounts { get; set; }
