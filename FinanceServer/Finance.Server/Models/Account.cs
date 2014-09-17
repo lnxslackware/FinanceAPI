@@ -8,7 +8,7 @@ namespace Finance.Server.Models
     {
         public Account()
         {
-            this.Orders = new HashSet<Order>();
+           
         }
 
         public int Id { get; set; }
@@ -20,6 +20,6 @@ namespace Finance.Server.Models
 
         public DateTime LastLogOn { get; set; }
 
-        public virtual HashSet<Order> Orders { get; set; }
+        
     }
 }
