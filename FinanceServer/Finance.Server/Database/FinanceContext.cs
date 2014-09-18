@@ -10,7 +10,7 @@ namespace Finance.Server.Database
         {
         }
 
-       public IDbSet<Account> Accounts { get; set; }
+        public IDbSet<Account> Accounts { get; set; }
 
         public IDbSet<Stock> Stocks { get; set; }
 
