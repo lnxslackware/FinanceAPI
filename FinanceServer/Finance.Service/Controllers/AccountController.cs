@@ -16,6 +16,7 @@ using Microsoft.Owin.Security.OAuth;
 using Finance.Service.Models;
 using Finance.Service.Providers;
 using Finance.Service.Results;
+using Finance.Models;
 
 namespace Finance.Service.Controllers
 {
