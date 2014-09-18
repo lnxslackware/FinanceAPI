@@ -14,9 +14,9 @@ namespace Finance.Server.Models
 
         public DateTime CreatedOn { get; set; }
 
+        [ForeignKey("StockId")]
         public int StockId { get; set; }
 
-        [ForeignKey("StockId")]
         public virtual Stock Stock { get; set; }
 
         public decimal Shares { get; set; }
@@ -26,9 +26,9 @@ namespace Finance.Server.Models
 
         public bool IsExecuted { get; set; }
 
+        [ForeignKey("AccountId")]
         public int AccountId { get; set; }
 
-        [ForeignKey("AccountId")]
         public virtual Account Account { get; set; }
     }
 }
