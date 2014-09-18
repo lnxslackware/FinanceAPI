@@ -283,6 +283,10 @@
       <Project>{e84ef46b-53f8-4b5e-8e47-9b29032eecc5}</Project>
       <Name>Finance.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Finance.Models\Finance.Models.csproj">
+      <Project>{46e1a3c6-640e-4b56-8616-bb893eb2505f}</Project>
+      <Name>Finance.Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Finance.Repository\Finance.Repository.csproj">
       <Project>{4f31e40d-bcaf-4dd6-8815-09f8f282faea}</Project>
       <Name>Finance.Repository</Name>

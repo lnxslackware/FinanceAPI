@@ -3,7 +3,7 @@
     using System.Web.Http;
 
     using Finance.Data;
-    using Finance.Data.Models;
+    using Finance.Models;
 
     public class OrderController : ApiController
     {
