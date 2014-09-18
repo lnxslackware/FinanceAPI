@@ -1,6 +1,7 @@
 ﻿namespace Finance.Service.Controllers
 {
     using System.Web.Http;
+    using Microsoft.AspNet.Identity;
 
     using Finance.Data;
     using Finance.Models;
@@ -67,6 +68,9 @@
             {
                 return BadRequest(string.Format("Failed to update order. No order with id {0} found.", id));
             }
+
+            // UserID - using Microsoft.AspNet.Identity;
+            var userID = User.Identity.GetUserId();
 
             orderToUpdate.AccountId = order.AccountId;
             orderToUpdate.CreatedOn = order.CreatedOn;
