@@ -1,14 +1,15 @@
 ﻿namespace Finance.Data
 {
+    using Finance.Data.Migrations;
     using Finance.Models;
     using System.Data.Entity;
 
     public class FinanceContext : DbContext, IFinanceContext
     {
         public FinanceContext()
-            : base("FinanceConnectionDB")
+            : base("Finance")
         {
-            // Database.SetInitializer(new MigrateDatabaseToLatestVersion<MusicDataContext, Configuration>());
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<FinanceContext, Configuration>());
         }
 
         public IDbSet<Account> Accounts { get; set; }
