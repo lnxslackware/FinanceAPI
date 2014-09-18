@@ -29,7 +29,7 @@
         [HttpGet]
         public IHttpActionResult GetStock(int id)
         {
-            var stockToShow = this.db.Stocks.Where(s => s.Id == id);
+            var stockToShow = this.db.Stocks.Where(s => s.Id == id).FirstOrDefault();
             return Ok(stockToShow);
         }
 
@@ -76,6 +76,8 @@
             }
 
             this.db.Stocks.Remove(stockToDelete);
+            this.db.SaveChanges(); 
+
             return Ok(stockToDelete);
         }
     }

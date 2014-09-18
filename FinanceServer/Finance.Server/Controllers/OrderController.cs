@@ -1,92 +1,97 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
-using  Finance.Server.Database;
-using  Finance.Server.Models;
-
-namespace Finance.Server.Controllers
+﻿namespace Finance.Server.Controllers
 {
+    using System;
+    using System.Linq;
+    using System.Web.Http;
+
+    using Finance.Server.Database;
+    using Finance.Server.Models;
+
     public class OrderController : ApiController
     {
-        private FinanceContext data = new FinanceContext();
+        private FinanceContext data;
 
-        [HttpGet]
-        public IHttpActionResult All()
+        public OrderController()
+            : this(new FinanceContext())
         {
-            //var aircrafts = this.data
-            //    .AirCrafts
-            //    .All()
-            //    .Select(AirCraftModel.FromAirCraft);
-            // this.data.Orders.;
-            var orders = this.data.Orders.Select(o=>o);
-
-            return Ok(orders);
         }
 
+        public OrderController(FinanceContext data)
+        {
+            this.data = data;
+        }
+
+        [HttpGet]
+        public IHttpActionResult AllOrders()
+        {
+            var allOrders = this.data.Orders;
+            return Ok(allOrders.ToList());
+        }
+
+        [HttpGet]
+        public IHttpActionResult ById(int id)
+        {
+            var orderToShow = this.data.Orders.Where(o => o.Id == id).FirstOrDefault();
+            return Ok(orderToShow);
+        }
+
+
         [HttpPost]
-        public IHttpActionResult Create(Order order)
+        public IHttpActionResult CreateOrder(Order order)
         {
             if (!this.ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var newOrder = new Order
+            if (order == null)
             {
-                AccountId = order.AccountId,
-                CreatedOn = order.CreatedOn,
-                IsExecuted = order.IsExecuted,
-                Price = order.Price,
-                Shares = order.Shares,
-                StockId = order.StockId
-            };
+                return BadRequest("You must provide an entry of type 'Order', 'NULL' provided.");
+            }
 
             // TODO: Fix it!
-            this.data.Orders.Add(newOrder); // throwing an exception {"The property 'StockId' cannot be configured as a navigation property. The property must be a valid entity type and the property should have a non-abstract getter and setter. For collection properties the type must implement ICollection<T> where T is a valid entity type."}
+            this.data.Orders.Add(order); // throwing an exception {"The property 'StockId' cannot be configured as a navigation property. The property must be a valid entity type and the property should have a non-abstract getter and setter. For collection properties the type must implement ICollection<T> where T is a valid entity type."}
             this.data.SaveChanges();
 
-            //airCraft.Id = newAirCraft.Id;
-            order.Id = newOrder.Id;
             return Ok(order);
         }
 
-        //[HttpPut]
-        //public IHttpActionResult Update(int id, AirCraftModel airCraft)
-        //{
-        //    //if (!this.ModelState.IsValid)
-        //    //{
-        //    //    return BadRequest(ModelState);
-        //    //}
+        [HttpPut]
+        public IHttpActionResult UpdateOrder(int id, Order order)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
-        //    //var existingAirCraft = this.data.AirCrafts.All().FirstOrDefault(a => a.Id == id);
-        //    //if (existingAirCraft == null)
-        //    //{
-        //    //    return BadRequest("Such aircraft does not exists!");
-        //    //}
+            Order orderToUpdate = this.data.Orders.FirstOrDefault(o => o.Id == id);
+            if (orderToUpdate == null)
+            {
+                return BadRequest(string.Format("Failed to update order. No order with id {0} found.", id));
+            }
 
-        //    //existingAirCraft.Model = airCraft.Model;
-        //    //this.data.SaveChanges();
+            orderToUpdate.AccountId = order.AccountId;
+            orderToUpdate.CreatedOn = order.CreatedOn;
+            orderToUpdate.IsExecuted = order.IsExecuted;
+            orderToUpdate.Price = order.Price;
+            orderToUpdate.Shares = order.Shares;
+            orderToUpdate.StockId = order.StockId;
 
-        //    //airCraft.Id = id;
-        //    //return Ok(airCraft);
-        //}
+            this.data.SaveChanges();
+            return Ok(order);
+        }
 
         [HttpDelete]
-        public IHttpActionResult Delete(int id)
+        public IHttpActionResult DeleteOrder(int id)
         {
-            //var existingAirCraft = this.data.AirCrafts.All().FirstOrDefault(a => a.Id == id);
-            //if (existingAirCraft == null)
-            //{
-            //    return BadRequest("Such aircraft does not exists!");
-            //}
-            var existingOrder = this.data.Orders.Where(a=> a.Id == id).FirstOrDefault();
+            var orderToDelete = this.data.Orders.FirstOrDefault(o => o.Id == id);
 
+            if (orderToDelete == null)
+            {
+                return BadRequest(string.Format("No order with id {0} found to be deleted", id));
+            }
 
-            //this.data.AirCrafts.Delete(existingAirCraft);
-            this.data.Orders.Remove(existingOrder);
+            this.data.Orders.Remove(orderToDelete);
             this.data.SaveChanges();
 
             return Ok();
