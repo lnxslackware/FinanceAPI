@@ -198,6 +198,8 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Controllers\StockController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -275,6 +277,16 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Finance.Data\Finance.Data.csproj">
+      <Project>{e84ef46b-53f8-4b5e-8e47-9b29032eecc5}</Project>
+      <Name>Finance.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Finance.Repository\Finance.Repository.csproj">
+      <Project>{4f31e40d-bcaf-4dd6-8815-09f8f282faea}</Project>
+      <Name>Finance.Repository</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
