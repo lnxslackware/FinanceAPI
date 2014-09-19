@@ -22,11 +22,11 @@
             this.repositories = new Dictionary<Type, object>();
         }
 
-        public IGenericRepository<Account> Accounts
+        public IGenericRepository<User> Users
         {
             get
             {
-                return this.GetRepository<Account>();
+                return this.GetRepository<User>();
             }
         }
 

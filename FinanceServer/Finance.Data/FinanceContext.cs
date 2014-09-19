@@ -12,7 +12,7 @@
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<FinanceContext, Configuration>());
         }
 
-        public IDbSet<Account> Accounts { get; set; }
+        public IDbSet<User> Users { get; set; }
 
         public IDbSet<Order> Orders { get; set; }
 
