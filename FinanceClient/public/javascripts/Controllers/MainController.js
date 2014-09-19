@@ -3,16 +3,27 @@ var app = angular.module('finance');
 
 app.controller('MainController', ['$scope', '$http', function ($scope, $http) {
     $scope.average = 0;
-    var url = 'http://localhost:3000/orders/';
+    var orderUrl = 'http://financeapi.apphb.com/api/Order';
+    var stockUrl = 'http://financeapi.apphb.com/api/Stock';
 
-    var doStudents = function (data) {
+    var doOrders = function (data) {
         $scope.orders = data.orders || [];
     };
 
-    var errorStudents = function () {
+    var errorOrders = function () {
         $scope.orders = [];
         console.error("DATABASE ERROR");
     };
 
-    $http.get(url).success(doStudents).error(errorStudents);
+    var doStocks = function (data) {
+        $scope.stocks = data || [];
+    };
+
+    var errorStocks = function () {
+        $scope.stocks = [];
+        console.error("DATABASE ERROR");
+    };
+
+    $http.get(orderUrl).success(doOrders).error(errorOrders);
+    $http.get(stockUrl).success(doStocks).error(errorStocks);
 }]);

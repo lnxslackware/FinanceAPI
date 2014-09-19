@@ -1,9 +1,9 @@
 section
-    form(ng-controller="FormAddStockController", name="formAddStock", novalidate)
+    form(ng-controller="FormDeleteStockController", name="formDeleteStock", novalidate)
         fieldset.default
             legend.hidden Add student form
             div.combine
-                label.default.top(for="name") Enter a name
-                input#name.default(type="text", ng-model="stock.Name", name="Name")
+                label.default.top(for="name") Enter an id
+                input#name.default(type="text", ng-model="stock.Id", name="Id")
             div.combine
                 button.default.blue(ng-click="addStock()") Submit

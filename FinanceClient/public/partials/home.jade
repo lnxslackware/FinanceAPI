@@ -1,5 +1,5 @@
-section#home
-    table(ng-controller="MainController")
+section#home(ng-controller="MainController")
+    table
         thead
             tr
                 th Id
@@ -7,11 +7,26 @@ section#home
                 th Shares
                 th Price
         tbody
-            tr(ng-repeat="s in orders")
-                td {{s.id}}
-                td {{s.stock}}
+            tr(ng-repeat="order in orders")
+                td {{order.Id}}
+                td {{order.stock}}
                 td {{s.shares}}
                 td {{s.price}}
+        tfoot
+            tr
+                td(colspan=3) Orders: {{students.length}}
+    h1 Stocks
+    table
+        thead
+            tr
+                th Id
+                th Name
+                th Shares
+                th Price
+        tbody
+            tr(ng-repeat="stock in stocks")
+                td {{stock.Id}}
+                td {{stock.Name}}
         tfoot
             tr
                 td(colspan=3) Orders: {{students.length}}
