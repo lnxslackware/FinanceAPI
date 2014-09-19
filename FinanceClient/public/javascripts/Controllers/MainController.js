@@ -16,6 +16,7 @@ app.controller('MainController', ['$scope', '$http', function ($scope, $http) {
     };
 
     var doStocks = function (data) {
+        console.log(data);
         $scope.stocks = data || [];
     };
 

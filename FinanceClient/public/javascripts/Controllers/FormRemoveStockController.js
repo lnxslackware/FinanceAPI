@@ -1,4 +1,4 @@
-app.controller('FormEditStockController', ['$scope', '$http', function ($scope, $http) {
+app.controller('FormRemoveStockController', ['$scope', '$http', function ($scope, $http) {
     $scope.stock = {};
 
     var postSuccess = function () {
@@ -10,8 +10,8 @@ app.controller('FormEditStockController', ['$scope', '$http', function ($scope, 
         console.log("DATABASE ERROR.");
     };
 
-    $scope.updateAccount = function () {
-        $http.put("http://financeapi.apphb.com/api/Stock", JSON.stringify($scope.stock)).
+    $scope.removeStock = function () {
+        $http.delete("http://financeapi.apphb.com/api/Stock", JSON.stringify($scope.stock)).
             success(postSuccess).
             error(dataBaseError);
 
