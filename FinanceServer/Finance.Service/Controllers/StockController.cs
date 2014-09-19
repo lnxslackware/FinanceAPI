@@ -2,14 +2,16 @@
 {
     using System.Linq;
     using System.Web.Http;
+    using System.Web.Http.Cors;
 
     using Finance.Data;
     using Finance.Models;
 
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class StockController : FinanceBaseController
     {
         public StockController()
-            : base ()
+            : base()
         {
 
         }
