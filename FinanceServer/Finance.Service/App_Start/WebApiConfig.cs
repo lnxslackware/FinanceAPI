@@ -1,4 +1,6 @@
-﻿namespace Finance.Service
+﻿using System.Web.Http.Cors;
+
+namespace Finance.Service
 {
     using System;
     using System.Collections.Generic;
@@ -13,7 +15,8 @@
     {
         public static void Register(HttpConfiguration config)
         {
-            config.EnableCors();
+            //config.EnableCors();
+           
             // Web API configuration and services
             // Configure Web API to use only bearer token authentication.
 
