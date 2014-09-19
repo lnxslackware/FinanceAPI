@@ -7,7 +7,7 @@ app.controller('MainController', ['$scope', '$http', function ($scope, $http) {
     var stockUrl = 'http://financeapi.apphb.com/api/Stock';
 
     var doOrders = function (data) {
-        $scope.orders = data.orders || [];
+        $scope.orders = data || [];
     };
 
     var errorOrders = function () {
