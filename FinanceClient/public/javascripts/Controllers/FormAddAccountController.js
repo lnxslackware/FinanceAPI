@@ -13,7 +13,7 @@ app.controller('FormAddAccountController', ['$scope', '$http', function ($scope,
     };
 
     $scope.addAccount = function () {
-        $http.post("http://localhost:3000/students/", JSON.stringify($scope.student)).
+        $http.post("http://localhost:3000/orders/", JSON.stringify($scope.student)).
             success(postSuccess).
             error(dataBaseError);
 

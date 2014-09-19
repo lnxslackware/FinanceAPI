@@ -1,16 +1,16 @@
 var app = angular.module('finance');
 app.controller('FormRemoveAccountController', ['$scope', '$http', function ($scope, $http) {
     $scope.student = undefined;
-    $scope.students = [];
-    var url = 'http://localhost:3000/students/';
+    $scope.orders = [];
+    var url = 'http://localhost:3000/orders/';
 
     var errorStudents = function () {
-        $scope.students = [];
+        $scope.orders = [];
         console.error("DATABASE ERROR");
     };
 
     $http.get(url).success(function (data) {
-        $scope.students = data.students || [];
+        $scope.orders = data.orders || [];
     }).error(errorStudents);
 
     $scope.removeAccount = function () {
@@ -20,7 +20,7 @@ app.controller('FormRemoveAccountController', ['$scope', '$http', function ($sco
 
         Connection.deleteJSON(finalURL, function () {
             $http.get(url).success(function (data) {
-                $scope.students = data.students || [];
+                $scope.orders = data.orders || [];
             }).error(errorStudents);
         });
 
