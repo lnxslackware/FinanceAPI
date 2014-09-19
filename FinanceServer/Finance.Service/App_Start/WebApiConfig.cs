@@ -8,9 +8,6 @@
     using Microsoft.Owin.Security.OAuth;
     using Newtonsoft.Json.Serialization;
     using System.Net.Http.Headers;
-    using System.Web.Http;
-   
-
 
     public static class WebApiConfig
     {
