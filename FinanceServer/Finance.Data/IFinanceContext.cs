@@ -7,7 +7,7 @@
 
     public interface IFinanceContext
     {
-        IDbSet<Account> Accounts { get; set; }
+        IDbSet<User> Users { get; set; }
 
         IDbSet<Order> Orders { get; set; }
 

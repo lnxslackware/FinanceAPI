@@ -5,7 +5,7 @@
 
     public interface IFinanceData
     {
-        IGenericRepository<Account> Accounts { get; }
+        IGenericRepository<User> Users { get; }
 
         IGenericRepository<Order> Orders { get; }
 

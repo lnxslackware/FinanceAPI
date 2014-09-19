@@ -29,6 +29,6 @@
         public int AccountId { get; set; }
 
         [ForeignKey("AccountId")]
-        public virtual Account Account { get; set; }
+        public virtual User Account { get; set; }
     }
 }
