@@ -4,9 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace Finance.Service.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public abstract class FinanceBaseController : ApiController
     {
         private IFinanceData data;
@@ -20,7 +22,7 @@ namespace Finance.Service.Controllers
             this.data = data;
         }
 
-        public IFinanceData Data 
+        public IFinanceData Data
         {
             get
             {

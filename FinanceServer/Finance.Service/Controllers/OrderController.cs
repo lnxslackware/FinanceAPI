@@ -1,12 +1,13 @@
 ﻿namespace Finance.Service.Controllers
 {
-    using System.Web.Http;
-    using System.Linq;
     using Microsoft.AspNet.Identity;
+    using System.Linq;
+    using System.Web.Http;
+    using System.Web.Http.Cors;
 
-    using Finance.Data;
     using Finance.Models;
 
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class OrderController : FinanceBaseController
     {
         public OrderController()
