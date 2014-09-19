@@ -1,4 +1,3 @@
-
 app.controller('FormAddStockController', ['$scope', '$http', function ($scope, $http) {
     $scope.stock = {};
 
@@ -12,7 +11,9 @@ app.controller('FormAddStockController', ['$scope', '$http', function ($scope, $
     };
 
     $scope.addStock = function () {
-        $http.post("http://financeapi.apphb.com/api/Stock", JSON.stringify($scope.stock)).
+        var text = JSON.stringify($scope.stock);
+
+        $http.post("http://financeapi.apphb.com/api/Stock", text).
             success(postSuccess).
             error(dataBaseError);
 
