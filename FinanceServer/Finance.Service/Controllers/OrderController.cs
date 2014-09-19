@@ -1,6 +1,7 @@
 ﻿namespace Finance.Service.Controllers
 {
     using System.Web.Http;
+    using System.Linq;
     using Microsoft.AspNet.Identity;
 
     using Finance.Data;
@@ -48,8 +49,24 @@
                 return BadRequest("You must provide an entry of type 'Order', 'NULL' provided.");
             }
 
-            // TODO: Fix it!
-            this.data.Orders.Add(order); // throwing an exception {"The property 'StockId' cannot be configured as a navigation property. The property must be a valid entity type and the property should have a non-abstract getter and setter. For collection properties the type must implement ICollection<T> where T is a valid entity type."}
+            var account = this.data.Accounts.GetAll().FirstOrDefault(a => a.Id == order.AccountId);
+
+            if (account == null)
+            {
+                return BadRequest(string.Format("No account with id {0} found.", order.AccountId));
+            }
+
+            var stock = this.data.Stocks.GetAll().FirstOrDefault(s => s.Id == order.StockId);
+
+            if (stock == null)
+            {
+                return BadRequest(string.Format("No stock with id {0} found.", order.AccountId));
+            }
+
+            order.Account = account;
+            order.Stock = stock;
+
+            this.data.Orders.Add(order);
             this.data.SaveChanges();
 
             return Ok(order);
