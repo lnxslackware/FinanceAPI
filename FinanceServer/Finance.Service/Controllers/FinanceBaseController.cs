@@ -14,6 +14,7 @@ namespace Finance.Service.Controllers
         private IFinanceData data;
 
         public FinanceBaseController()
+            : this(new FinanceData())
         {
         }
 
