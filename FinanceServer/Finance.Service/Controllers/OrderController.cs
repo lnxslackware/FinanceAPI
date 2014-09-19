@@ -5,6 +5,7 @@
     using System.Web.Http;
     using System.Web.Http.Cors;
 
+    using Finance.Repository;
     using Finance.Models;
 
     [EnableCors(origins: "*", headers: "*", methods: "*")]
@@ -28,7 +29,6 @@
             var orderToShow = this.Data.Orders.Get(id);
             return Ok(orderToShow);
         }
-
 
         [HttpPost]
         public IHttpActionResult CreateOrder(Order order)
