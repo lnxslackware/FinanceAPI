@@ -1,10 +1,10 @@
 var app = angular.module('finance');
 
 app.controller('FormAddAccountController', ['$scope', '$http', function ($scope, $http) {
-    $scope.student = {};
+    $scope.stock = {};
 
     var postSuccess = function () {
-        $scope.student = {};
+        $scope.stock = {};
         $scope.formAddStudentForm.$setPristine();
     };
 
@@ -13,7 +13,7 @@ app.controller('FormAddAccountController', ['$scope', '$http', function ($scope,
     };
 
     $scope.addAccount = function () {
-        $http.post("http://localhost:3000/orders/", JSON.stringify($scope.student)).
+        $http.post("http://localhost:3000/orders/", JSON.stringify($scope.stock)).
             success(postSuccess).
             error(dataBaseError);
 

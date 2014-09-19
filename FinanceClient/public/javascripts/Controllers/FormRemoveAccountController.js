@@ -1,6 +1,6 @@
 var app = angular.module('finance');
 app.controller('FormRemoveAccountController', ['$scope', '$http', function ($scope, $http) {
-    $scope.student = undefined;
+    $scope.stock = undefined;
     $scope.orders = [];
     var url = 'http://localhost:3000/orders/';
 
@@ -14,7 +14,7 @@ app.controller('FormRemoveAccountController', ['$scope', '$http', function ($sco
     }).error(errorStudents);
 
     $scope.removeAccount = function () {
-        var finalURL = url + $scope.student;
+        var finalURL = url + $scope.stock;
 
         // $http.delete(finalURL); this is supposed to work if the server was fine.
 
@@ -24,7 +24,7 @@ app.controller('FormRemoveAccountController', ['$scope', '$http', function ($sco
             }).error(errorStudents);
         });
 
-        $scope.student = undefined;
+        $scope.stock = undefined;
         $scope.formAddStudentForm.$setPristine();
     }
 }]);
