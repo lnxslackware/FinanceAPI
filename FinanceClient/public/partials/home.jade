@@ -1,0 +1,15 @@
+section#home
+    table(ng-controller="MainController")
+        thead
+            tr
+                th Id
+                th Name
+                th Grade
+        tbody
+            tr(ng-repeat="s in students")
+                td {{s.id}}
+                td {{s.name}}
+                td {{s.grade}}
+        tfoot
+            tr
+                td(colspan=3) Students: {{students.length}} Grade Average: {{average | number : 2}}

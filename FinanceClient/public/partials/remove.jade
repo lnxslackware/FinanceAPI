@@ -1,0 +1,10 @@
+section
+    form(ng-controller="FormRemoveAccountController", name="formAddStudentForm", novalidate)
+        fieldset.default
+            legend.hidden Remove student form
+            div.combine
+                label.default.top(for="student") Select a student
+                select.default(ng-model="student", ng-options="s.id as s.name for s in students")
+                    option(value="") I would like to remove...
+            div.combine
+                button.default.blue(ng-click="removeAccount()") Submit

@@ -1,0 +1,6 @@
+1. You need Node JS to check this homework.
+2. It is written with Angular JS, Jade and Less.
+3. Navigate to folder with package.json, and start the server file "www" in the folder "bin".
+4. Open command window when you are in the folder with package.json, and type "node ./bin/www" or "npm start" to run the server.
+5. Open the browser, and type "http://localhost:8080/, and you should see the homework.
+6. Look in the public and views folders for the project files.

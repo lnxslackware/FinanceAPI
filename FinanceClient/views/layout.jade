@@ -1,8 +1,32 @@
 doctype html
-html
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  body
-    include  header
-    block content
+html(ng-app="finance")
+    head
+        title= title
+        link(rel='stylesheet', href='/stylesheets/style.css')
+
+    body
+        header
+            nav
+                ul#tabs
+                    li
+                        a(href="#/") Home
+                    li
+                        a(href="#/add") Add account
+                    li
+                        a(href="#/remove") Remove account
+                    li
+                        a(href="#/edit") Edit account
+                    li
+                        a(href="#/edit") Add stock
+                    li
+                        a(href="#/edit") Edit stock
+                    li
+                        a(href="#/edit") Remove stock
+                    li
+                        a(href="#/edit") Create order
+                    li
+                        a(href="#/edit") Edit order
+                    li
+                        a(href="#/edit") Delete order
+        block content
+        include scripts

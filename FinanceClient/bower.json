@@ -1,0 +1,22 @@
+{
+  "name": "Task4",
+  "version": "0.0.0",
+  "homepage": "",
+  "authors": [
+    ""
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "./public/libraries",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-route": "~1.2.21",
+    "jquery": "~2.1.1",
+    "angular": "~1.2.21"
+  }
+}

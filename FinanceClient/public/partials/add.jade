@@ -1,0 +1,15 @@
+section
+    form(ng-controller="FormAddAccountController", name="formAddStudentForm", novalidate)
+        fieldset.default
+            legend.hidden Add student form
+            div.combine
+                label.default.top(for="name") Enter a name
+                input#name.default(type="text", ng-model="account.name", name="name")
+            div.combine
+                label.default.top(for="grade") Enter a grade
+                input#grade.default(type="text", ng-model="account.login", name="login")
+            div.combine
+                label.default.top(for="grade") Enter a password
+                input#grade.default(type="text", ng-model="account.password", name="password")
+            div.combine
+                button.default.blue(ng-click="addAccount()") Submit

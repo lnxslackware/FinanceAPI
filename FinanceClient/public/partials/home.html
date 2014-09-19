@@ -1,0 +1,1 @@
+<section id="home"><table ng-controller="MainController"><thead><tr><th>Id</th><th>Name</th><th>Grade</th></tr></thead><tbody><tr ng-repeat="s in students"><td>{{s.id}}</td><td>{{s.name}}</td><td>{{s.grade}}</td></tr></tbody><tfoot><tr><td colspan="3">Students: {{students.length}} Grade Average: {{average | number : 2}}</td></tr></tfoot></table></section>

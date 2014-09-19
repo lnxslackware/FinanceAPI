@@ -1,22 +1,289 @@
+@mainTextColor: #222;
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
+blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img,
+ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center,
+dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody,
+tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure,
+figcaption, footer, header, menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: top;
+}
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: Calibri, Arial, Helvetica, sans-serif;
 }
 
-a {
-  color: #00B7FF;
-  background-color: white;
+h1 {
+  &.default {
+    font-size: 24px;
+  }
 }
 
-#main-header {
+
+h2 {
+  &.default {
+    font-size: 20px;
+  }
+}
+
+pre {
+  &.default {
+    font-size: 14px;
+  }
+}
+
+header {
+  height: 30px;
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
+  background: purple;
 
   nav {
-    ul {
+    ul#tabs {
+      margin: 0 auto;
       list-style-type: none;
       li {
         display: inline-block;
-        padding: 5px 10px;
+        padding: 5px;
+        font-size: 14px;
+        a {
+          font-weight: bold;
+          color: #ffffff;
+          text-decoration: none;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
       }
     }
+  }
+}
+
+#main {
+  width: 300px;
+  margin: 35px auto 0 auto;
+}
+
+#home {
+  table {
+    border-collapse: collapse;
+
+    th {
+      padding: 5px 10px;
+      font-weight: bold;
+      text-align: center;
+      border: @formBorder;
+    }
+
+    td {
+      padding: 5px 10px;
+      border: @formBorder;
+
+      &:nth-of-type(1) {
+        text-align: right;
+      }
+
+      &:nth-of-type(3) {
+        text-align: center;
+      }
+    }
+
+    tfoot {
+      td {
+        text-align: center;
+        border: none;
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+}
+
+label {
+  &.default {
+    font-size: 14px;
+    font-weight: bold;
+    color: @mainTextColor;
+  }
+
+  &.top {
+    margin-bottom: 4px;
+    display: block;
+  }
+}
+
+p {
+  &.default {
+    font-size: 12px;
+  }
+
+  &.centered {
+    text-align: center;
+  }
+}
+
+input[type="text"] {
+  &.default {
+    width: 100%;
+    font-size: 14px;
+    color: black;
+    height: 30px;
+    display: inline-block;
+    padding: 5px 8px;
+    background: #fff;
+    border: 1px solid #d9d9d9;
+    border-top: 1px solid #c0c0c0;
+    box-sizing: border-box;
+    border-radius: 2px;
+  }
+
+  &.ng-invalid.ng-dirty {
+    border: 1px solid red !important;
+  }
+
+  &.ng-valid.ng-dirty {
+    border: 1px solid green !important;
+  }
+
+  &:focus {
+    outline: none;
+    border: 1px solid #4d90fe;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
+  }
+}
+
+span {
+  font-size: 12px;
+
+  &.error {
+    color: red;
+    margin-top: 5px;
+    display: block;
+  }
+
+  &.bold {
+    font-weight: bold;
+  }
+
+  &.right {
+    float: right;
+  }
+}
+
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+input[type="file"] > input[type="button"] {
+  @-moz-document url-prefix() {
+    &::-moz-focus-inner {
+      border: none;
+    }
+  }
+
+  &.default {
+    display: inline-block;
+    min-width: 7rem;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    height: 30px;
+    padding: 0px 8px;
+    border-radius: 2px;
+    cursor: pointer;
+  }
+
+  @ButtonColor: #4d90fe;
+
+  &.blue {
+    border: 1px solid darken(@ButtonColor, 10);
+    color: #fff;
+    text-shadow: 0 1px rgba(0, 0, 0, 0.1);
+    background-color: @ButtonColor;
+
+    &:hover {
+      border: 1px solid darken(@ButtonColor, 15);
+      color: #fff;
+      text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+      background-color: darken(@ButtonColor, 5);
+    }
+  }
+}
+
+.combine {
+  width: 100%;
+  margin-bottom: 10px;
+
+  &:last-child {
+    text-align: center;
+    margin-bottom: 0px;
+  }
+}
+
+@formBackColor: #f1f1f1;
+@formBorder: 1px solid darken(@formBackColor, 10);
+@formDefaultPadding: 20px;
+
+fieldset {
+  &.default {
+    padding: @formDefaultPadding;
+    background: @formBackColor;
+    border: @formBorder;
+  }
+  fieldset {
+    border: @formBorder;
+    padding: 10px;
+  }
+}
+
+legend {
+  &.hidden {
+    overflow: hidden;
+    position: absolute !important;
+    padding: 0 !important;
+    border: 0 !important;
+    height: 1px !important;
+    width: 1px !important;
+  }
+}
+
+select {
+  &.default {
+    background-color: white;
+    font-size: 14px;
+    display: inline-block;
+    height: 30px;
+    padding: 5px 8px;
+    border: 1px solid #d9d9d9;
+    border-top: 1px solid #c0c0c0;
+    box-sizing: border-box;
+    border-radius: 2px;
+    width: 100%;
+    color: @mainTextColor;
+  }
+
+  &.ng-invalid {
+    border: 1px solid red !important;
+  }
+
+  &:focus {
+    outline: none;
+    border: 1px solid #4d90fe;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
+  }
+  &:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 #000;
   }
 }
